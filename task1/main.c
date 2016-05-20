@@ -1,6 +1,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+//сириусли? в тз сказано, что (1,1) <= (x1, y1) <= (x2, y2) <= (n, n)
+//ничего про обработку неправильного ввода нет
 int main(int argc, const char* argv[]) {
     int n;
     int x1, x2, y1, y2;
@@ -24,6 +26,11 @@ int main(int argc, const char* argv[]) {
         }
 
         scanf("%d%d%d", &y1, &x2, &y2);
+        if (!(1 <= x1 && x1 <= x2 && x2 <= n &&
+              1 <= y1 && y1 <= y2 && y2 <= n)) {
+            printf("ERROR: Incorrect input\n");
+            continue;
+        }
         for(i = x1-1; i<x2; ++i) {
             for (j = y1-1; j<y2; ++j) {
                 printf("%d ", table[i][j]);
