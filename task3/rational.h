@@ -1,3 +1,6 @@
+#ifndef rational_number
+#define rational_number
+
 class rational {
 private:
 	int num;
@@ -15,3 +18,4 @@ public:
 	rational operator *(rational const &) const;
 	rational operator /(rational const &) const;
 };
+#endif
