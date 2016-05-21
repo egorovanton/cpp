@@ -388,7 +388,8 @@ int main(int argc, char const *argv[]) {
             printBook(stdout, book);
         } else if(!strcmp(command, "find")) {
             str = getStringFromFile(stdin);
-            printFound(stdout, book, str);
+            if (correctName(str) || correctNumber(str))
+                printFound(stdout, book, str);
             free(str);
         } else if(!strcmp(command, "create")) {
             name = getStringFromFile(stdin); number = getStringFromFile(stdin);
