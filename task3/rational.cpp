@@ -37,5 +37,5 @@ rational rational::operator *(rational const &b) const {
 	return rational(num * b.getNum(), denom * b.getDenom());
 }
 rational rational::operator /(rational const &b) const {
-	return rational(num * b.getDenom(), denom + b.getNum());
+	return rational(num * b.getDenom(), denom * b.getNum());
 }
