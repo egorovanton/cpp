@@ -196,7 +196,7 @@ void fullPrint(const Book *book) {
     }
 }
 
-char *read(FILE* input) {
+char *getStringFromFile(FILE* input) {
     int length = 16;
     int size = 0;
     char *str = (char *) malloc(sizeof(char)*length);
@@ -304,15 +304,15 @@ void readBookFromFile(FILE *input, Book *book) {
     char *name, *number;
     while (!feof(input)) {
         fscanf(input, "%d", &id);
-        name = read(input);
-        number = read(input);
+        name = getStringFromFile(input);
+        number = getStringFromFile(input);
         if (name[0] == 0 || number[0] == 0) {
             free(name);
             free(number);
             continue;
         }
         if (!correctName(name) || !correctNumber(number)) {
-            printf("ERROR: cannot read %d %s %s\n", id, name, number);
+            printf("ERROR: cannot getStringFromFile %d %s %s\n", id, name, number);
             free(name);
             free(number);
             return;
@@ -385,11 +385,11 @@ int main(int argc, char const *argv[]) {
         } else if(!strcmp(command, "print")) {
             printBook(stdout, book);
         } else if(!strcmp(command, "find")) {
-            str = read(stdin);
+            str = getStringFromFile(stdin);
             printFound(stdout, book, str);
             free(str);
         } else if(!strcmp(command, "create")) {
-            name = read(stdin); number = read(stdin);
+            name = getStringFromFile(stdin); number = getStringFromFile(stdin);
             corName = correctName(name);
             corNumber = correctNumber(number);
             if (correctName && correctNumber) {
@@ -403,7 +403,7 @@ int main(int argc, char const *argv[]) {
         } else if(!strcmp(command, "change")) {
             int id;
             scanf("%d%s", &id, command);
-            str = read(stdin);
+            str = getStringFromFile(stdin);
             if(!strcmp(command, "number")) {
                 corName = correctName(str);
                 if (corName)
