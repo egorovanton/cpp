@@ -270,7 +270,7 @@ bool correctNumber(char *number) {
         number[0] = ' ';
         ++i;
     }
-    
+
     for (; i < length; ++i) {
         if (number[i] == '-') {
             if (wasOpen && !wasClose)
@@ -433,6 +433,7 @@ int main(int argc, char const *argv[]) {
         if (!corNumber) {
             printf("ERROR: Invalid number\n");
         }
+        fflush(stdout);
     }
 
     return 0;
