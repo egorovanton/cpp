@@ -1,14 +1,14 @@
 class rational {
 private:
 	int num;
-	int denum;
-	
+	int denom;
+
 public:
-	rational(int num, int denum);
+	rational(int num, int denom);
 	rational(int num);
 
 	int getNum() const;
-	int getDenum() const;
+	int getDenom() const;
 
 	rational operator +(rational const &) const;
 	rational operator -(rational const &) const;

@@ -9,33 +9,33 @@ int gcd ( int a, int b )
   return b;
 }
 
-rational::rational(int num, int denum){
-	int g = gcd(num, denum);
+rational::rational(int num, int denom){
+	int g = gcd(num, denom);
 	this->num   = num / g;
-	this->denum = denum / g;
+	this->denom = denom / g;
 }
 
 rational::rational(int num) {
 	this->num   = num;
-	this->denum = 1;
+	this->denom = 1;
 }
 
 int rational::getNum() const {
 	return num;
 }
-int rational::getDenum() const {
-	return denum;
+int rational::getDenom() const {
+	return denom;
 }
 
 rational rational::operator +(rational const &b) const {
-	return rational(num*b.denum + denum*b.num, denum*b.denum);
+	return rational(num*b.getDenom() + denom*b.getNum(), denom*b.getDenom());
 }
 rational rational::operator -(rational const &b) const {
-	return rational(num*b.denum - denum*b.num, denum*b.denum);
+	return rational(num*b.getDenom() - denom*b.getNum(), denom*b.getDenom());
 }
 rational rational::operator *(rational const &b) const {
-	return rational(num * b.num, denum * b.denum);
+	return rational(num * b.getNum(), denom * b.getDenom());
 }
 rational rational::operator /(rational const &b) const {
-	return rational(num * b.denum, denum + b.num);
+	return rational(num * b.getDenom(), denom + b.getNum());
 }
