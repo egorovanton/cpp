@@ -325,7 +325,7 @@ void readBookFromFile(FILE *input, Book *book) {
     }
     if (unsorted)
         qsort(book->contacts, book->size, sizeof(Contact), compareContacts);
-    book->lastId = id;
+    book->lastId = maxID;
 }
 
 char *sh_fileName;
@@ -335,7 +335,7 @@ void signal_handler(int sig) {
     printBook(output, sh_book);
     fclose(output);
     deleteBook(sh_book);
-
+    exit(EXIT_SUCCESS);
     return;
 }
 
