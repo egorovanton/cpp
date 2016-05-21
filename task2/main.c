@@ -264,11 +264,13 @@ bool correctNumber(char *number) {
     int length = strlen(number);
     bool wasOpen  = false; //Have we ever seen opening bracket?
     bool wasClose = false; //Have we ever seen closing bracket?
+    
     int i = 0;
     if (number[0] == '+') {
         number[0] = ' ';
         ++i;
     }
+    
     for (; i < length; ++i) {
         if (number[i] == '-') {
             if (wasOpen && !wasClose)
