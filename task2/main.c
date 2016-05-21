@@ -360,7 +360,8 @@ int main(int argc, char const *argv[]) {
     readBookFromFile(input, book);
     fclose(input);
 
-    sh_fileName = argv[1];
+    sh_fileName = malloc(strlen(argv[1]));
+    strcpy(sh_fileName, argv[1]);
     sh_book = book;
     signal(SIGINT, signal_handler); 
 
