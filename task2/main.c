@@ -4,6 +4,7 @@
 #include "stdbool.h"
 #include "ctype.h"
 #include "signal.h"
+#include "unistd.h"
 
 #define max(x, y) (((x)>(y))?(x):(y))
 
@@ -261,8 +262,8 @@ bool afterDefis(char c) {
 // otherwise, returns false
 bool correctNumber(char *number) {
     int length = strlen(number);
-    bool wasOpen  = false; //Have we ever seen opening bracket before?
-    bool wasClose = false; //Have we ever seen closing bracket before?
+    bool wasOpen  = false; //Have we ever seen opening bracket?
+    bool wasClose = false; //Have we ever seen closing bracket?
     int i = 0;
     if (number[0] == '+') {
         number[0] = ' ';
@@ -354,12 +355,15 @@ int main(int argc, char const *argv[]) {
         return 0;
     }
     argv[1];
-    FILE *input = fopen(argv[1], "r");
-    Book *book = createBook();
-    readBookFromFile(input, book);
-    fclose(input);
 
-    sh_fileName = malloc(strlen(argv[1]));
+    Book *book = createBook();
+    if( access( argv[1], R_OK ) != -1 ) {
+        FILE *input = fopen(argv[1], "r");
+        readBookFromFile(input, book);
+        fclose(input);
+    }
+
+    sh_fileName = (char *) malloc(strlen(argv[1] + 1));
     strcpy(sh_fileName, argv[1]);
     sh_book = book;
     signal(SIGINT, signal_handler); 
