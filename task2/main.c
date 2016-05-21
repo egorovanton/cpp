@@ -305,7 +305,6 @@ void readBookFromFile(FILE *input, Book *book) {
         fscanf(input, "%d", &id);
         name = read(input);
         number = read(input);
-        printf ("debug %d %s %s\n", id, name, number);
         if (name[0] == 0 || number[0] == 0) {
             free(name);
             free(number);
