@@ -21,7 +21,7 @@ LazyString::LazyString(const LazyString& lazyStr) {
 LazyString::LazyString(const std::shared_ptr<std::string>& str, size_t pos, size_t len) {
     string = str;
     start = pos;
-    this->len - len
+    this->len = len;
 }
 
 LazyString::operator std::string() {
