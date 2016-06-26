@@ -7,13 +7,11 @@
 #include <memory>
 #include <mutex>
 
-using namespace std;
-
 class LazyLock
 {
     private:
         std::atomic<int> readers;
-        mutex mutex;
+        std::mutex mutex;
     public:
         LazyLock();
         LazyLock(const LazyLock& lock);
