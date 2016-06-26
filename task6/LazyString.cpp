@@ -28,12 +28,17 @@ LazyString::operator std::string() {
     return std::string(string->substr(start, len));
 }
 
+char& LazyString::operator [] (size_t pos) {
+    return string->at(pos);
+}
+
 const char& LazyString::operator [] (size_t pos) const {
     return at(pos);
 }
+
 const char& LazyString::at (size_t pos) const {
     if (pos + start > len) {
-        throw std::out_of_range("LazyString::at");
+        throw std::out_of_range("LazyString::at()");
     }
     return string->at(pos + start);
 }

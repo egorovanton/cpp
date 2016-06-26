@@ -14,6 +14,7 @@ class LazyString
 
         operator std::string();
 
+        char& operator [] (size_t pos);
         const char& operator[] (size_t pos) const;
         const char& at (size_t pos) const;
 
